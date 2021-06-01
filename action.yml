@@ -1,0 +1,25 @@
+name: Github exec command
+author: dj256
+description: Github Action to execute a command on a remote server
+inputs:
+  host:
+    description: "Hostname or IP address of the server"
+    required: true
+  username:
+    description: "Username for authentication."
+    required: false
+  password:
+    description: "Password for authentication."
+    required: false
+  port:
+    description: "Port of the server to connect to"
+    required: false
+    default: "22"
+  command:
+    description: "Command to execute on remote server"
+    required: true
+runs:
+  using: "node12"
+  main: "dist/bundle.js"
+branding:
+  color: "blue"

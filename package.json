@@ -1,0 +1,38 @@
+{
+  "name": "github-exec",
+  "version": "1.0.0",
+  "description": "A GitHub action that allows you to execute a command on your server after deployment for example",
+  "main": "src/index.ts",
+  "scripts": {
+    "transpile": "tsc",
+    "compile": "npx webpack",
+    "build": "npm run transpile && run compile",
+    "run": "node dist/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dj-256/github-exec.git"
+  },
+  "author": "dj-256",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dj-256/github-exec/issues"
+  },
+  "homepage": "https://github.com/dj-256/github-exec#readme",
+  "dependencies": {
+    "@actions/core": "^1.3.0",
+    "ini": "^2.0.0",
+    "ssh2": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/ini": "^1.3.30",
+    "@types/node": "^15.6.1",
+    "@types/ssh2": "^0.5.46",
+    "node-loader": "^2.0.0",
+    "node-polyfill-webpack-plugin": "^1.1.2",
+    "ts-loader": "^9.2.2",
+    "typescript": "^4.3.2",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0"
+  }
+}
