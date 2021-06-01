@@ -23,3 +23,4 @@ runs:
   main: "out/bundle.js"
 branding:
   color: "blue"
+  icon: "chevron-right"
