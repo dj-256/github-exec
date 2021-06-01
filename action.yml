@@ -20,6 +20,6 @@ inputs:
     required: true
 runs:
   using: "node12"
-  main: "dist/bundle.js"
+  main: "out/bundle.js"
 branding:
   color: "blue"
