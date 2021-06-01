@@ -3,7 +3,7 @@ import * as ini from 'ini';
 import * as fs from 'fs';
 import { ExecAction } from './lib';
 
-const TEST = true
+const TEST = false
 
 function run(): Promise<any> {
     let execAction = new ExecAction()
