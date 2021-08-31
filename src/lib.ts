@@ -8,9 +8,12 @@ export class ExecAction {
         this.client = new ExecClient()
     }
 
-    execCommand(options: ExecActionOptions): Promise<void> {
+    execCommand(options: ExecActionOptions): Promise<void|void[]> {
         return this.client.connect(options)
-            .then(() => this.client.exec(options.command))
+            .then(() => {
+                let commands = options.command.split(/\n/)
+                return Promise.all(commands.map(command => this.client.exec(command)))
+            })
             .catch(e => console.log(e))
     }
 }
