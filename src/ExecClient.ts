@@ -1,14 +1,16 @@
 import * as ssh2 from 'ssh2';
-import { Client } from "ssh2";
-import { EventEmitter } from "events";
+import {Client} from 'ssh2';
+import {EventEmitter} from "events";
 
 
 export class ExecClient extends EventEmitter {
     client: Client
+    errors: number
 
     constructor() {
         super()
         this.client = new Client()
+        this.errors = 0
     }
 
     connect(options: ssh2.ConnectConfig): Promise<void> {
@@ -27,8 +29,8 @@ export class ExecClient extends EventEmitter {
                 this.client.exec(command, (err, stream) => {
                     if (err) reject(err)
                     console.log(`> ${command}`)
-                    stream.on('close', (code: any, signal: any) => {
-                        console.log('Stream :: close :: code: ' + code + ', signal: ' + signal);
+                    stream.on('close', (code: any) => {
+                        code !== 0 && this.errors++
                         resolve()
                     }).on('data', (data: any) => {
                         process.stdout.write(data);
@@ -37,7 +39,7 @@ export class ExecClient extends EventEmitter {
                     });
                 })
             } catch (e) {
-                reject()
+                reject(e)
             }
         })
     }

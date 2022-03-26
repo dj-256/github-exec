@@ -20,7 +20,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           password: ${{ secrets.PASSWORD }}
-          command: 'ls -la'
+          command: 'ls'
       - name: Multiple lines command
         uses: ./
         with:
