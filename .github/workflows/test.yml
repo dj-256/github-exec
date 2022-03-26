@@ -31,5 +31,4 @@ jobs:
           command: |
             cd ~/example/app2
             sudo rm -rf ./node_modules/
-            rm package-lock.json
             npm install -C /home/ubuntu/example/app2
