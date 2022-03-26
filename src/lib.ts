@@ -8,15 +8,17 @@ export class ExecAction {
         this.client = new ExecClient()
     }
 
-    execCommand(options: ExecActionOptions): Promise<void|void[]> {
-        return this.client.connect(options)
-            .then(() => {
-                let commands = options.command.split(/\n/)
-                return Promise.all(commands.map(command => {
-                    console.log(`IN: ${command}`)
-                    return this.client.exec(command)
-                }))
-            })
-            .catch(e => console.log(e))
+    async execCommand(options: ExecActionOptions): Promise<void> {
+        try {
+            await this.client.connect(options)
+            let commands = options.command.split(/\n/)
+            console.log(`commands: ${commands}`)
+
+            for (let command of commands) {
+                await this.client.exec(command)
+            }
+        } catch (e) {
+            console.error(e)
+        }
     }
 }

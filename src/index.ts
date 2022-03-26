@@ -3,7 +3,7 @@ import * as ini from 'ini';
 import * as fs from 'fs';
 import { ExecAction } from './lib';
 
-function run(): Promise<any> {
+async function run(): Promise<any> {
     let execAction = new ExecAction()
     console.log(process.env.NODE_ENV)
 
@@ -11,11 +11,11 @@ function run(): Promise<any> {
         let config = ini.parse(fs.readFileSync('config.ini', 'utf-8'));
         let options = config.options
         console.log(options)
-        return execAction.execCommand(
+        return await execAction.execCommand(
             options
         )
     } else {
-        return execAction.execCommand({
+        return await execAction.execCommand({
             host: core.getInput('host'),
             username: core.getInput('username'),
             password: core.getInput('password'),

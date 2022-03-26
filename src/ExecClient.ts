@@ -26,14 +26,14 @@ export class ExecClient extends EventEmitter {
             try {
                 this.client.exec(command, (err, stream) => {
                     if (err) reject(err)
-                    console.log(`STDIN: ${command}`)
+                    console.log(`> ${command}`)
                     stream.on('close', (code: any, signal: any) => {
                         console.log('Stream :: close :: code: ' + code + ', signal: ' + signal);
                         resolve()
                     }).on('data', (data: any) => {
-                        process.stdout.write('STDOUT: ' + data);
+                        process.stdout.write(data);
                     }).stderr.on('data', (data) => {
-                        process.stderr.write('STDERR: ' + data);
+                        process.stderr.write(data);
                     });
                 })
             } catch (e) {

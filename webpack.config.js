@@ -26,6 +26,7 @@ module.exports = {
             'fs':false,
             "dns":false,
             "net":false,
+            'cpu-features':false,
             "child_process":false,
         },
     },
