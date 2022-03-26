@@ -1,6 +1,6 @@
 {
   "name": "github-exec",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A GitHub action that allows you to execute a command on your server after deployment for example",
   "main": "src/index.ts",
   "scripts": {
