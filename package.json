@@ -6,6 +6,7 @@
   "scripts": {
     "transpile": "tsc",
     "compile": "npx webpack",
+    "build": "npm run transpile && npm run compile",
     "run": "node dist/bundle.js"
   },
   "repository": {

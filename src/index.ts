@@ -3,12 +3,11 @@ import * as ini from 'ini';
 import * as fs from 'fs';
 import { ExecAction } from './lib';
 
-const TEST = false
-
 function run(): Promise<any> {
     let execAction = new ExecAction()
-    console.log('Begin')
-    if (process.env.NODE_ENV === 'test' || TEST) {
+    console.log(process.env.NODE_ENV)
+
+    if (process.env.GITHUB_ACTION_ENV === 'test') {
         let config = ini.parse(fs.readFileSync('config.ini', 'utf-8'));
         let options = config.options
         console.log(options)

@@ -12,7 +12,10 @@ export class ExecAction {
         return this.client.connect(options)
             .then(() => {
                 let commands = options.command.split(/\n/)
-                return Promise.all(commands.map(command => this.client.exec(command)))
+                return Promise.all(commands.map(command => {
+                    console.log(`IN: ${command}`)
+                    return this.client.exec(command)
+                }))
             })
             .catch(e => console.log(e))
     }
