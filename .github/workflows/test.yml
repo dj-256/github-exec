@@ -20,7 +20,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           password: ${{ secrets.PASSWORD }}
-          command: 'sudo service apache2 restart'
+          command: 'ls -la'
       - name: Multiple lines command
         uses: ./
         with:
@@ -32,4 +32,4 @@ jobs:
             cd ~/example/app2
             sudo rm -rf ./node_modules/
             rm package-lock.json
-            npm install
+            npm install -C /home/ubuntu/example/app2
