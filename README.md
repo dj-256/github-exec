@@ -8,25 +8,25 @@ A GitHub action that allows you to execute commands on your server after deploym
 
 ```yml
 - name: Reload nginx
-  uses: dj-256/github-deploy@v1
+  uses: dj-256/github-exec@v1
   with:
     host: ${{ secrets.HOST }}
     port: ${{ secrets.PORT }}
     username: ${{ secrets.USERNAME }}
     password: ${{ secrets.PASSWORD }}
-    command: sudo service reload ngnix
+    command: sudo service reload nginx
 
 ```
 
-### **Install requirements and restart**
+### **Install requirements and restart app**
 
 ```yml
 - name: Copy entire directory
-  uses: dj-256/github-deploy@v1
+  uses: dj-256/github-exec@v1
   with:
     host: ${{ secrets.HOST }}
     port: ${{ secrets.PORT }}
-    username: ${{ secrets.SSH_USER }}
+    username: ${{ secrets.USERNAME }}
     password: ${{ secrets.PASSWORD }}
     command: |
       npm install -C /home/user/myapp
@@ -43,7 +43,7 @@ A GitHub action that allows you to execute commands on your server after deploym
 
 - **username** - _string_ - Username for authentication. **required**
 
-- **password** - _string_ - Password for password-based user authentication. **required**
+- **password** - _string_ - Password for authentication. **required**
 
 - **command** - _string_ - The command(s) to execute on the host **required**
 
