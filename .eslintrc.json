@@ -11,7 +11,8 @@
     "overrides": [
     ],
     "ignorePatterns": [
-        "webpack.config.js"
+        "webpack.config.js",
+        "out"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {

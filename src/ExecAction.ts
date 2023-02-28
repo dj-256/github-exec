@@ -10,6 +10,9 @@ export class ExecAction {
         this.commandInput = ""
     }
 
+    connectAndExec = (options: ExecActionOptions) =>
+        this.connect(options).then(() => this.exec())
+
     connect = (options: ExecActionOptions) =>
         this.client
             .connect(options)
