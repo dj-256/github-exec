@@ -1,16 +1,24 @@
+import * as dotenv from "dotenv"
 import * as core from "@actions/core"
-import * as ini from "ini"
-import * as fs from "fs"
 import { ExecAction } from "./ExecAction"
+
+dotenv.config()
 
 const run = () => {
     const execAction = new ExecAction()
 
     if (process.env.GITHUB_ACTION_ENV === "test") {
-        const config = ini.parse(fs.readFileSync("config.ini", "utf-8"))
-        const options = config.options
+        const options = {
+            host: process.env.TEST_HOST || "",
+            username: process.env.TEST_USERNAME || "",
+            password: process.env.TEST_PASSWORD,
+            port: +(process.env.TEST_PORT || 22),
+            command: process.env.TEST_COMMAND || "",
+            privateKey: process.env.TEST_PRIVATE_KEY,
+            passphrase: process.env.TEST_PASSPHRASE,
+        }
 
-        return execAction.execCommand(options).catch((e) => {
+        return execAction.connectAndExec(options).catch((e) => {
             console.error(e)
             process.exit(1)
         })
@@ -22,6 +30,8 @@ const run = () => {
                 password: core.getInput("password"),
                 port: +core.getInput("port") || 22,
                 command: core.getInput("command"),
+                privateKey: core.getInput("privateKey"),
+                passphrase: core.getInput("pprase"),
             })
             .then(() => execAction.exec())
             .then(() => {

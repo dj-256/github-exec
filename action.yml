@@ -18,6 +18,12 @@ inputs:
   command:
     description: "Command to execute on remote server"
     required: true
+  privateKey:
+    description: "Private key for authentication."
+    required: false
+  passphrase:
+    description: "Passphrase for authentication."
+    required: false
 runs:
   using: "node12"
   main: "out/bundle.js"
