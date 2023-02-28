@@ -1,0 +1,5 @@
+# Ignore artifacts:
+*.json
+*.md
+out
+*.yml

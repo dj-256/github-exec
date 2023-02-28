@@ -15,7 +15,6 @@ A GitHub action that allows you to execute commands on your server after deploym
     username: ${{ secrets.USERNAME }}
     password: ${{ secrets.PASSWORD }}
     command: sudo service reload nginx
-
 ```
 
 ### **Install requirements and restart app**
@@ -32,7 +31,6 @@ A GitHub action that allows you to execute commands on your server after deploym
       npm install -C /home/user/myapp
       pm2 restart myapp
       pm2 info myapp
-
 ```
 
 ## Options
